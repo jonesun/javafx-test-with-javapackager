@@ -1,0 +1,114 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.jonesun</groupId>
+    <artifactId>javafx-test-with-javapackager</artifactId>
+    <version>1.0.0</version>
+
+    <properties>
+        <maven.compiler.target>15</maven.compiler.target>
+        <maven.compiler.source>15</maven.compiler.source>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <exec.mainClass>com.jonesun.Main</exec.mainClass>
+        <java.version>15</java.version>
+        <javafx.version>15</javafx.version>
+    </properties>
+
+    <dependencies>
+
+        <!-- 使用了Liberica JDK就不需要引用openjfx了-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.openjfx</groupId>-->
+        <!--            <artifactId>javafx-controls</artifactId>-->
+        <!--            <version>${javafx.version}</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.openjfx</groupId>-->
+        <!--            <artifactId>javafx-fxml</artifactId>-->
+        <!--            <version>${javafx.version}</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.openjfx</groupId>-->
+        <!--            <artifactId>javafx-graphics</artifactId>-->
+        <!--            <version>${javafx.version}</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.openjfx</groupId>-->
+        <!--            <artifactId>javafx-base</artifactId>-->
+        <!--            <version>${javafx.version}</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.openjfx</groupId>-->
+        <!--            <artifactId>javafx-swing</artifactId>-->
+        <!--            <version>${javafx.version}</version>-->
+        <!--        </dependency>-->
+    </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>0.0.5</version>
+                <configuration>
+                    <mainClass>com.jonesun.Main</mainClass>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>io.github.fvarrui</groupId>
+                <artifactId>javapackager</artifactId>
+                <version>1.4.1</version>
+                <configuration>
+                    <bundleJre>true</bundleJre>
+                    <additionalResources>
+                        <additionalResource>info.txt</additionalResource>
+                        <additionalResource>test</additionalResource>
+                    </additionalResources>
+                    <generateInstaller>true</generateInstaller>
+                    <createZipball>false</createZipball>
+                    <createTarball>false</createTarball>
+                    <platform>mac</platform>
+                </configuration>
+                <executions>
+<!--                    <execution>-->
+<!--                        <id>package-for-mac</id>-->
+<!--                        <phase>package</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>package</goal>-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            <platform>mac</platform>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
+<!--                    <execution>-->
+<!--                        <id>package-for-linux</id>-->
+<!--                        <phase>package</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>package</goal>-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            <platform>linux</platform>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
+                    <execution>
+                        <id>package-for-windows</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>package</goal>
+                        </goals>
+                        <configuration>
+                            <platform>windows</platform>
+                            <!--                            <jdkPath>C:\jonesun\software\bellsoft-java15.0.1\jdk-15.0.1-full</jdkPath>-->
+                            <!--                            <jrePath>C:\jonesun\software\bellsoft-java15.0.1\jre-15.0.1-full</jrePath>-->
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
