@@ -1,4 +1,4 @@
-package com.jonesun;
+package com.jonesun.bootstrap;
 
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;

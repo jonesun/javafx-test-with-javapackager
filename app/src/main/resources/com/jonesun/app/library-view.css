@@ -1,0 +1,7 @@
+.library-view {
+	-fx-background-color: cream-white;
+}
+
+.jfx-rippler {
+	-jfx-rippler-fill: primary-light-color;
+}

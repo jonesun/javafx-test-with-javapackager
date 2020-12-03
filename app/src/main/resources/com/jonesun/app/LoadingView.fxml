@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<fx:root type="StackPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1">
+   <children>
+      <StackPane id="shadow" fx:id="shadow" prefHeight="150.0" prefWidth="200.0" />
+      <VBox alignment="CENTER">
+         <children>
+            <ImageView fx:id="imageView" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@spinner.gif" />
+               </image>
+            </ImageView>
+            <Label fx:id="label" text="Loading..." />
+         </children>
+      </VBox>
+   </children>
+</fx:root>

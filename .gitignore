@@ -1,2 +1,4 @@
 # Project exclude paths
 /target/
+/.idea/
+/javafx-test-with-javapackager.iml
