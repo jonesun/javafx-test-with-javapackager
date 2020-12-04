@@ -78,7 +78,7 @@ public class LibraryView extends FXMLView {
 
 	@FXML
 	private void showDialog(ActionEvent evt) {
-		JavaFxLauncher.showDialog("Message", "This is a JFoeniX dialog.", ButtonType.OK);
+//		JavaFxLauncher.showDialog("Message", "This is a JFoeniX dialog.", ButtonType.OK);
 	}
 
 }

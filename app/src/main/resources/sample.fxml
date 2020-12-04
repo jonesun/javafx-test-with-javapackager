@@ -3,7 +3,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<GridPane fx:controller="Controller"
+<GridPane prefWidth="650" prefHeight="500"
+        fx:controller="com.jonesun.app.Controller"
           xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
     <Label fx:id="label"/>
 </GridPane>
