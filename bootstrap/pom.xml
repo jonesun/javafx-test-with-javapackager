@@ -43,7 +43,7 @@
                         <additionalResource>info.txt</additionalResource>
                         <additionalResource>res</additionalResource>
                     </additionalResources>
-                    <generateInstaller>false</generateInstaller>
+                    <generateInstaller>true</generateInstaller>
                     <createZipball>false</createZipball>
                     <createTarball>false</createTarball>
                     <customizedJre>false</customizedJre>

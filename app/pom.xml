@@ -55,7 +55,9 @@
                         </goals>
                         <configuration>
                             <outputDirectory>${config.location}/app</outputDirectory>
-                            <includeGroupIds>com.jfoenix,org.jfxtras,org.controlsfx</includeGroupIds>
+<!--                            <includeGroupIds>com.jfoenix,org.jfxtras,org.controlsfx</includeGroupIds>-->
+                            <excludeGroupIds>org.update4j</excludeGroupIds>
+                            <excludeArtifactIds>bootstrap</excludeArtifactIds>
                         </configuration>
                     </execution>
                 </executions>

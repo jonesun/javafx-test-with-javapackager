@@ -1,4 +1,10 @@
 # Project exclude paths
 /target/
 /.idea/
-/javafx-test-with-javapackager.iml
+/app/target/
+/bootstrap/target/
+/create-config/target/
+/create-config/create-config.iml
+/bootstrap/bootstrap.iml
+*.iml
+/app/app.iml

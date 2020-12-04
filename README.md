@@ -10,6 +10,8 @@
 
 关于[JavaPackager](https://github.com/fvarrui/JavaPackager)更多配置可参考其github
 
+引用[update4j](https://github.com/update4j/update4j)用于支持工具更新
+
 制作安装程序, 使用
 
 ```
