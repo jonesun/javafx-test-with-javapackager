@@ -7,13 +7,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.update4j.LaunchContext;
 import org.update4j.inject.InjectTarget;
 import org.update4j.service.Launcher;
 
 import java.io.IOException;
 
+@SpringBootApplication
 public class JavaFxLauncher extends Application implements Launcher {
+
+    private ConfigurableApplicationContext context;
 
     @Override
     public long version() {
@@ -22,6 +28,15 @@ public class JavaFxLauncher extends Application implements Launcher {
 
     @InjectTarget
     private Stage primaryStage;
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage stage) throws Exception {
+        show(stage, getParent());
+    }
 
     @Override
     public void run(LaunchContext ctx) {
@@ -37,18 +52,13 @@ public class JavaFxLauncher extends Application implements Launcher {
 
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
-
-    @Override
-    public void start(Stage stage) throws Exception {
-        Parent parent = getParent();
-        show(stage, parent);
-    }
-
     private Parent getParent() throws IOException {
-        return FXMLLoader.load(getClass().getResource("/sample.fxml"));
+        SpringApplicationBuilder builder = new SpringApplicationBuilder(JavaFxLauncher.class);
+        context = builder.run();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample.fxml"));
+        loader.setControllerFactory(context::getBean);
+        return loader.load();
     }
 
     private void show(Stage stage, Parent parent) {
