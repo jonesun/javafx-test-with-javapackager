@@ -31,6 +31,7 @@ import org.update4j.service.UpdateHandler;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.function.Consumer;
 
 public class StartupView extends FXMLView implements UpdateHandler, Injectable {
 
@@ -151,15 +152,13 @@ public class StartupView extends FXMLView implements UpdateHandler, Injectable {
 
 			//FIXME: add opt-out checkbox
 			if (checkUpdates.getValue()) {
-				ButtonType launch = new ButtonType("Launch", ButtonData.OK_DONE);
+				ButtonType launch = new ButtonType("更新", ButtonData.OK_DONE);
 				Alert alert = new Alert(AlertType.CONFIRMATION);
-				alert.setHeaderText("Update required");
-				alert.setContentText("Application is not up-to-date, launch anyway?");
-				alert.getButtonTypes().setAll(ButtonType.CANCEL, launch);
+				alert.setHeaderText("新版本提示");
+				alert.setContentText("存在新版本，需要更新");
+				alert.getButtonTypes().setAll(launch);
 
-				alert.showAndWait().filter(bt -> bt == launch).ifPresent(bt -> {
-					run.start();
-				});
+				alert.showAndWait().filter(bt -> bt == launch).ifPresent(buttonType -> updatePressed(null));
 			} else {
 				run.start();
 			}
