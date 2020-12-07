@@ -8,11 +8,11 @@
 安装[WiX Toolset](https://github.com/wixtoolset/wix3/releases/tag/wix3112rtm), 并将bin目录加入到path中，用于创建Windows安装包。
 为了“candle”和"light"两个命令行能够执行
 
-关于[JavaPackager](https://github.com/fvarrui/JavaPackager)更多配置可参考其github
+关于[JavaPackager](https://github.com/fvarrui/JavaPackager) 更多配置可参考其github
 
-引用[update4j](https://github.com/update4j/update4j)用于支持工具更新
+引用[update4j](https://github.com/update4j/update4j) 用于支持工具更新
 
-使用前准备
+## 使用前准备
 
 使用nginx映射一个静态文件访问路径，或者其他方式，只要可以提供文件下载的服务就行，用于自动更新时下载对应配置和jar使用
 
