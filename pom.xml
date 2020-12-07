@@ -21,8 +21,7 @@
         <java.version>15</java.version>
         <javafx.version>15</javafx.version>
 
-        <root>C:\jonesunUpdate4j</root>
-        <!--		<root>${maven.multiModuleProjectDirectory}</root>-->
+        <root>${user.dir}/app-update</root>
         <target>${root}/target</target>
         <config.location>${target}/config</config.location>
     </properties>

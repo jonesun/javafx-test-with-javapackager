@@ -50,26 +50,26 @@
                     <!--                    <platform>mac</platform>-->
                 </configuration>
                 <executions>
-                    <!--                    <execution>-->
-                    <!--                        <id>package-for-mac</id>-->
-                    <!--                        <phase>package</phase>-->
-                    <!--                        <goals>-->
-                    <!--                            <goal>package</goal>-->
-                    <!--                        </goals>-->
-                    <!--                        <configuration>-->
-                    <!--                            <platform>mac</platform>-->
-                    <!--                        </configuration>-->
-                    <!--                    </execution>-->
-                    <!--                    <execution>-->
-                    <!--                        <id>package-for-linux</id>-->
-                    <!--                        <phase>package</phase>-->
-                    <!--                        <goals>-->
-                    <!--                            <goal>package</goal>-->
-                    <!--                        </goals>-->
-                    <!--                        <configuration>-->
-                    <!--                            <platform>linux</platform>-->
-                    <!--                        </configuration>-->
-                    <!--                    </execution>-->
+                    <execution>
+                        <id>package-for-mac</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>package</goal>
+                        </goals>
+                        <configuration>
+                            <platform>mac</platform>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>package-for-linux</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>package</goal>
+                        </goals>
+                        <configuration>
+                            <platform>linux</platform>
+                        </configuration>
+                    </execution>
                     <execution>
                         <id>package-for-windows</id>
                         <phase>package</phase>

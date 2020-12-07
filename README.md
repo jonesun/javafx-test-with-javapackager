@@ -12,8 +12,23 @@
 
 引用[update4j](https://github.com/update4j/update4j)用于支持工具更新
 
-制作安装程序, 使用
+使用前准备
+
+使用nginx映射一个静态文件访问路径，或者其他方式，只要可以提供文件下载的服务就行，用于自动更新时下载对应配置和jar使用
+
+找到bootstrap项目中的JavaFxDelegate类，修改configUrl为：xxx/app/config.xml
+
+找到create-config项目中的CreateConfig类，修改BASE_URL为：xxx
+
+使用idea或者其他工具运行maven命令
 
 ```
 mvn package
 ```
+
+对应会在项目的根目录下生成app-update文件夹，将内部的app文件夹上传到提供下载服务的目录中，打开浏览器访问: xxx/app/config.xml, 可以正常访问即可
+
+找到bootstrap项目的target文件夹，可以发现bootstrap_1.0.0.exe、bootstrap_1.0.0.msi，打开即可安装，或者直接打开bootstrap文件中的bootstrap.exe运行免安装版
+
+
+
