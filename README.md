@@ -2,7 +2,7 @@
 
 为了运行javaFx，请下载Full version版本
 
-安装[inno setup6](https://www.microsoft.com/zh-CN/download/details.aspx?id=21), 并加入到path中，用于制作windows安装程序(最好下载最新版本)
+安装[inno setup6](https://jrsoftware.org/isdl.php), 并加入到path中，用于制作windows安装程序(最好下载最新版本)
 为了“iscc”这个命令行能够执行
 
 安装[WiX Toolset](https://github.com/wixtoolset/wix3/releases/tag/wix3112rtm), 并将bin目录加入到path中，用于创建Windows安装包。
@@ -10,7 +10,7 @@
 
 关于[JavaPackager](https://github.com/fvarrui/JavaPackager) 更多配置可参考其github
 
-引用[update4j](https://github.com/update4j/update4j) 用于支持工具更新
+引入[update4j](https://github.com/update4j/update4j) 用于支持工具更新
 
 ## 使用前准备
 
