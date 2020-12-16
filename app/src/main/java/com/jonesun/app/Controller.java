@@ -4,6 +4,8 @@ import com.jonesun.app.service.MyService;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +18,8 @@ import java.util.ResourceBundle;
  */
 @Component
 public class Controller implements Initializable {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @FXML
     public Label label;
@@ -30,5 +34,10 @@ public class Controller implements Initializable {
         String javafxVersion = System.getProperty("javafx.version");
         label.setText("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + "."
                 + "\r\n" + myService.getSpringVersion());
+        logger.debug("debug test");
+        logger.info("info test");
+        logger.error("error test");
+        logger.warn("warn test");
+        logger.trace("trace test");
     }
 }

@@ -9,3 +9,4 @@
 *.iml
 /app/app.iml
 /app-update/
+/logs/
