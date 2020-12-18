@@ -30,5 +30,82 @@ mvn package
 
 找到bootstrap项目的target文件夹，可以发现bootstrap_1.0.0.exe、bootstrap_1.0.0.msi，打开即可安装，或者直接打开bootstrap文件中的bootstrap.exe运行免安装版
 
+# 加解密
+
+为了防止工具被任意分发，可以使用证书加解密功能
+
+* 使用jdk提供的keytool创建keystore文件
+```
+keytool -genkeypair -alias jonesun.github.io -keyalg RSA -keystore D:\IdeaProjects\javafx-test-with-javapackager\jonesun.keystore -storetype pkcs12
+```
+
+按照提示输入密码，demo中使用的是12345678，根据自己需求修改即可(注意文件keystore根据自己实际环境修改)
+
+* create-config中加入加密功能
+
+```
+ KeyStore ks = KeyStore.getInstance("pkcs12");
+try (FileInputStream in = new FileInputStream("jonesun.keystore")) {
+    ks.load(in, "12345678".toCharArray());
+
+    PrivateKey key = (PrivateKey) ks.getKey("jonesun.github.io", "12345678".toCharArray());
+    System.out.println("key: " + key);
+
+    Configuration config = Configuration.builder()
+            .baseUri(BASE_URL + "/app")
+            .basePath("${user.dir}/app")
+            .files(refs)
+            .property("maven.central", MAVEN_BASE)
+            .signer(key)
+            .build();
+    
+    //签名相关
+    //https://github.com/update4j/update4j/issues/5
+    try (Writer out = Files.newBufferedWriter(Paths.get(dir + "/config.xml"))) {
+        config.write(out);
+    }
+}
+```
+
+* bootstrap加入解密功能
+
+JavaFxDelegate类中:
+
+```
+URL configUrl = new URL("http://192.168.31.13/resource/demo/app/config.xml");
+try (Reader in = new InputStreamReader(configUrl.openStream(), StandardCharsets.UTF_8);
+     InputStream certIn = Files.newInputStream(Paths.get("jonesun.keystore"))) {
+    KeyStore ks = KeyStore.getInstance("pkcs12");
+    ks.load(certIn, "12345678".toCharArray());
+    Certificate certificate = ks.getCertificate("jonesun.github.io");
+    PublicKey publicKey = certificate.getPublicKey();
+    Configuration config = Configuration.read(in, publicKey);
+
+    StartupView startup = new StartupView(config, primaryStage);
+
+    Scene scene = new Scene(startup);
+    scene.getStylesheets().add(getClass().getResource("root.css").toExternalForm());
+
+    primaryStage.getIcons().addAll(images);
+    primaryStage.setScene(scene);
+
+    primaryStage.setTitle("Update4j Demo Launcher");
+    primaryStage.show();
+} catch (IOException e) {
+    e.printStackTrace();
+    Optional<ButtonType>  buttonType = new Alert(Alert.AlertType.ERROR, "发生错误，请检查配置或者网络", new ButtonType[]{ButtonType.CLOSE}).showAndWait();
+    buttonType.ifPresent(buttonType1 -> {
+        Platform.exit();
+        System.exit(0);
+    });
+}
+```
+
+pom.xml中加入将.keystore加入到工具中:
+
+```xml
+     <additionalResource>../jonesun.keystore</additionalResource>
+```
+
 
 

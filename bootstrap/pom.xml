@@ -42,7 +42,9 @@
                     <additionalResources>
                         <additionalResource>info.txt</additionalResource>
                         <additionalResource>res</additionalResource>
+                        <additionalResource>../jonesun.keystore</additionalResource>
                     </additionalResources>
+                    <administratorRequired>true</administratorRequired>
                     <generateInstaller>true</generateInstaller>
                     <createZipball>false</createZipball>
                     <createTarball>false</createTarball>
