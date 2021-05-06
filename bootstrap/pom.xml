@@ -49,6 +49,11 @@
                     <createZipball>false</createZipball>
                     <createTarball>false</createTarball>
                     <customizedJre>false</customizedJre>
+                    <organizationName>jone sun</organizationName>
+                    <organizationUrl>https://jonesun.github.io/</organizationUrl>
+                    <organizationEmail>sunjoner7@gmail.com</organizationEmail>
+                    <displayName>JSun Test APP</displayName>
+                    <name>js-bootstrap</name>
                     <!--                    <platform>mac</platform>-->
                 </configuration>
                 <executions>
