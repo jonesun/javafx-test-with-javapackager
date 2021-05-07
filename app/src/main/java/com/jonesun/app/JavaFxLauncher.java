@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.update4j.LaunchContext;
+import org.update4j.Property;
 import org.update4j.inject.InjectTarget;
 import org.update4j.service.Launcher;
 
@@ -35,13 +36,14 @@ public class JavaFxLauncher extends Application implements Launcher {
 
     @Override
     public void start(Stage stage) throws Exception {
-        show(stage, getParent());
+        show(stage, getParent("test"));
     }
 
     @Override
     public void run(LaunchContext ctx) {
         try {
-            Parent parent = getParent();
+            String activeProfiles = ctx.getConfiguration().getDynamicProperties().getOrDefault("profiles.active", "dev");
+            Parent parent = getParent(activeProfiles);
             Platform.runLater(() -> {
                 show(new Stage(), parent);
                 primaryStage.hide();
@@ -52,9 +54,9 @@ public class JavaFxLauncher extends Application implements Launcher {
 
     }
 
-    private Parent getParent() throws IOException {
+    private Parent getParent(String activeProfiles) throws IOException {
         SpringApplicationBuilder builder = new SpringApplicationBuilder(JavaFxLauncher.class);
-        context = builder.run();
+        context = builder.profiles(activeProfiles).run();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample.fxml"));
         loader.setControllerFactory(context::getBean);

@@ -1,0 +1,4 @@
+# 生产环境
+spring:
+  application:
+    name: javafx demo prod

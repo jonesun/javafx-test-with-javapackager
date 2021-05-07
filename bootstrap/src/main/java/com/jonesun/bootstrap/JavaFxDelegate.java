@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.update4j.Configuration;
+import org.update4j.Property;
 import org.update4j.service.Delegate;
 
 import java.io.IOException;
@@ -24,6 +25,7 @@ import java.security.KeyStore;
 import java.security.PublicKey;
 import java.security.cert.Certificate;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
@@ -62,7 +64,8 @@ public class JavaFxDelegate extends Application implements Delegate {
             ks.load(certIn, "12345678".toCharArray());
             Certificate certificate = ks.getCertificate("jonesun.github.io");
             PublicKey publicKey = certificate.getPublicKey();
-            Configuration config = Configuration.read(in, publicKey);
+            //启动模式设置为dev 可选test/dev/prod
+            Configuration config = Configuration.read(in, publicKey, Map.of("profiles.active", "prod"));
 
             StartupView startup = new StartupView(config, primaryStage);
 
