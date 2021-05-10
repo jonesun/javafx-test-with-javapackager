@@ -69,7 +69,7 @@ public class Controller implements Initializable {
         Scene scene = getScene(actionEvent);
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("/second.fxml"));
-        fxmlLoader.setBuilderFactory(new JavaFXBuilderFactory());
+//        fxmlLoader.setBuilderFactory(new JavaFXBuilderFactory());
 //            fxmlLoader.setRoot(this);
         fxmlLoader.setController(springContext.getBean(SecondController.class));
 
