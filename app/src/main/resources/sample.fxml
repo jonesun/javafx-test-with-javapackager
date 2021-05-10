@@ -3,8 +3,10 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<GridPane prefWidth="650" prefHeight="500"
-        fx:controller="com.jonesun.app.Controller"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+<?import javafx.scene.layout.VBox?>
+<VBox prefWidth="650" prefHeight="500"
+      fx:controller="com.jonesun.app.Controller"
+      xmlns:fx="http://javafx.com/fxml" alignment="center">
     <Label fx:id="label"/>
-</GridPane>
+    <Button text="open new page" onAction="#doOpenNewPage" />
+</VBox>

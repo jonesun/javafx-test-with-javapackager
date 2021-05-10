@@ -11,7 +11,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.update4j.LaunchContext;
-import org.update4j.Property;
 import org.update4j.inject.InjectTarget;
 import org.update4j.service.Launcher;
 

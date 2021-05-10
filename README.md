@@ -36,7 +36,7 @@ mvn package
 
 * 使用jdk提供的keytool创建keystore文件
 ```
-keytool -genkeypair -alias jonesun.github.io -keyalg RSA -keystore D:\IdeaProjects\javafx-test-with-javapackager\jonesun.keystore -storetype pkcs12
+keytool -genkeypair -alias jonesun.github.io -keyalg RSA -keystore D:\IdeaProjects\javafx-test-with-javapackager\jonesun.keystore -storetype pkcs12  -validity 1000
 ```
 
 按照提示输入密码，demo中使用的是12345678，根据自己需求修改即可(注意文件keystore根据自己实际环境修改)
