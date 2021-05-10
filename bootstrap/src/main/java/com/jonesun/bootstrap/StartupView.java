@@ -198,7 +198,9 @@ public class StartupView extends FXMLView implements UpdateHandler, Injectable {
 					}
 
 				};
-
+				doUpdate.setOnSucceeded(stateEvent -> {
+					launchPressed(null);
+				});
 				run(doUpdate);
 			}
 		});

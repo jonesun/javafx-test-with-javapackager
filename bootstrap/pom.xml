@@ -15,14 +15,6 @@
         <exec.mainClass>com.jonesun.bootstrap.JavaFxDelegate</exec.mainClass>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.update4j</groupId>
-            <artifactId>update4j</artifactId>
-            <version>1.5.6</version>
-        </dependency>
-    </dependencies>
-
     <build>
         <plugins>
             <plugin>

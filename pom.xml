@@ -41,7 +41,7 @@
         <dependency>
             <groupId>org.update4j</groupId>
             <artifactId>update4j</artifactId>
-            <version>1.5.6</version>
+            <version>1.5.7</version>
         </dependency>
 
         <!-- 使用了Liberica JDK就不需要引用openjfx了-->
