@@ -11,11 +11,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.update4j.LaunchContext;
-import org.update4j.Property;
 import org.update4j.inject.InjectTarget;
 import org.update4j.service.Launcher;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.Objects;
 
 @SpringBootApplication
 public class JavaFxLauncher extends Application implements Launcher {
@@ -57,19 +58,19 @@ public class JavaFxLauncher extends Application implements Launcher {
     private Parent getParent(String activeProfiles) throws IOException {
         SpringApplicationBuilder builder = new SpringApplicationBuilder(JavaFxLauncher.class);
         context = builder.profiles(activeProfiles).run();
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample.fxml"));
-        loader.setControllerFactory(context::getBean);
-        return loader.load();
+        //一定要修改FXMLLoader的默认类加载器，否则使用bootstrap启动器启动时fxml中会由于无法加载到类而报错(详细参考FXMLLoader源码)
+        FXMLLoader.setDefaultClassLoader(this.getClass().getClassLoader());
+        return FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/sample.fxml")), null, null, context::getBean, StandardCharsets.UTF_8);
     }
 
     private void show(Stage stage, Parent parent) {
         Scene scene = new Scene(parent);
         scene.getStylesheets()
-                .add(JFXButton.class.getResource("/com/jfoenix/assets/css/jfoenix-fonts.css").toExternalForm());
-        scene.getStylesheets()
-                .add(JFXButton.class.getResource("/com/jfoenix/assets/css/jfoenix-design.css")
-                        .toExternalForm());
+                .addAll(
+                        Objects.requireNonNull(JFXButton.class.getResource("/com/jfoenix/assets/css/jfoenix-fonts.css")).toExternalForm(),
+                        Objects.requireNonNull(JFXButton.class.getResource("/com/jfoenix/assets/css/jfoenix-design.css")).toExternalForm(),
+                        Objects.requireNonNull(JFXButton.class.getResource("/css/common.css")).toExternalForm()
+                );
 
         parent.applyCss();
         parent.layout();

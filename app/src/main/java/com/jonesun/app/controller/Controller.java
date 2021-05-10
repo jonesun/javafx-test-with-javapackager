@@ -1,6 +1,7 @@
-package com.jonesun.app;
+package com.jonesun.app.controller;
 
 import com.jonesun.app.service.MyService;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -18,10 +20,8 @@ import java.util.ResourceBundle;
  * @author jone.sun
  * @date 2020-12-04 11:07
  */
-@Component
-public class Controller implements Initializable {
-
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+@org.springframework.stereotype.Controller
+public class Controller extends BaseController {
 
     @FXML
     public Label label;
@@ -47,5 +47,13 @@ public class Controller implements Initializable {
         logger.warn("warn test");
         logger.trace("trace test");
 
+    }
+
+    public void doOpenNextPage(ActionEvent actionEvent) throws IOException {
+        openController(actionEvent, "/fxml/second.fxml");
+    }
+
+    public void doOpenDialog(ActionEvent actionEvent) throws IOException {
+        openDialogController(actionEvent, "提示", getPaneByFxmlName("/fxml/second.fxml"));
     }
 }

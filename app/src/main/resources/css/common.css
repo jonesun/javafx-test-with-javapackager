@@ -1,0 +1,33 @@
+.root {
+    /*应用的主要色调, 标题栏默认使用该颜色*/
+    colorPrimary: white;
+
+    /*主要文字颜色*/
+    textColorPrimary: black;
+
+    /*高亮色 CheckBox,RadioButton等控件的选中颜色*/
+    colorAccent: red;
+
+    -fx-background-color: colorPrimary;
+}
+
+/* 默认控件的样式 */
+.label, .button, .check-box, .radio-button, .text-field, .text-area {
+    -fx-font-size: 18;
+    -fx-text-fill: textColorPrimary;
+}
+
+/* 可以点击的控件鼠标移入时都会显示小手 **/
+.button, .check-box, .radio-button {
+    -fx-cursor: hand;
+}
+
+.jfx-radio-button {
+    -jfx-selected-color: colorAccent;
+    -jfx-unselected-color: textColorPrimary;
+}
+
+.jfx-check-box {
+    -jfx-unchecked-color: textColorPrimary;
+    -jfx-checked-color: colorAccent;
+}
