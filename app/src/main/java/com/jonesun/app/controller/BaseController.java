@@ -18,7 +18,9 @@ import org.springframework.context.ApplicationContext;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.Locale;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
 /**
  * @author jone.sun
@@ -88,7 +90,11 @@ public abstract class BaseController implements Initializable {
      * @throws IOException
      */
     public Parent getPaneByFxmlName(String fxmlName) throws IOException {
-        return FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlName)), null, null, springContext::getBean, StandardCharsets.UTF_8);
+        Thread.currentThread().setContextClassLoader(getClass().getClassLoader());
+        FXMLLoader.setDefaultClassLoader(Thread.currentThread().getContextClassLoader());
+        return FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlName)),
+                ResourceBundle.getBundle("language.message", Locale.getDefault(), Thread.currentThread().getContextClassLoader()),
+                null, springContext::getBean, StandardCharsets.UTF_8);
     }
 
     /**

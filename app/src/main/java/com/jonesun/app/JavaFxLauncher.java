@@ -16,7 +16,9 @@ import org.update4j.service.Launcher;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.Locale;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
 @SpringBootApplication
 public class JavaFxLauncher extends Application implements Launcher {
@@ -59,8 +61,11 @@ public class JavaFxLauncher extends Application implements Launcher {
         SpringApplicationBuilder builder = new SpringApplicationBuilder(JavaFxLauncher.class);
         context = builder.profiles(activeProfiles).run();
         //一定要修改FXMLLoader的默认类加载器，否则使用bootstrap启动器启动时fxml中会由于无法加载到类而报错(详细参考FXMLLoader源码)
-        FXMLLoader.setDefaultClassLoader(this.getClass().getClassLoader());
-        return FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/sample.fxml")), null, null, context::getBean, StandardCharsets.UTF_8);
+        Thread.currentThread().setContextClassLoader(getClass().getClassLoader());
+        FXMLLoader.setDefaultClassLoader(Thread.currentThread().getContextClassLoader());
+        return FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/sample.fxml")),
+                ResourceBundle.getBundle("language.message", Locale.getDefault(), Thread.currentThread().getContextClassLoader()),
+                null, context::getBean, StandardCharsets.UTF_8);
     }
 
     private void show(Stage stage, Parent parent) {
