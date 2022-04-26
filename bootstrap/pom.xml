@@ -36,7 +36,7 @@
                         <additionalResource>res</additionalResource>
 <!--                        <additionalResource>${name}.l4j.ini</additionalResource>-->
                         <!-- 注意这个 .l4j.ini 需要和下面得name对应上-->
-                        <additionalResource>js-bootstrap.l4j.ini</additionalResource>
+<!--                        <additionalResource>js-bootstrap.l4j.ini</additionalResource>-->
                         <additionalResource>../jonesun.keystore</additionalResource>
                     </additionalResources>
                     <administratorRequired>true</administratorRequired>
@@ -49,6 +49,17 @@
                     <organizationEmail>sunjoner7@gmail.com</organizationEmail>
                     <displayName>JSun Test APP</displayName>
                     <name>js-bootstrap</name>
+                    <vmArgs>
+                        <vmArg>--add-exports=javafx.controls/com.sun.javafx.scene.control.behavior=ALL-UNNAMED</vmArg>
+                        <vmArg>--add-exports=javafx.base/com.sun.javafx.binding=ALL-UNNAMED</vmArg>
+                        <vmArg>--add-exports=javafx.base/com.sun.javafx.event=ALL-UNNAMED</vmArg>
+                        <vmArg>--add-exports=javafx.graphics/com.sun.javafx.stage=ALL-UNNAMED</vmArg>
+                        <vmArg>--add-exports=javafx.graphics/com.sun.javafx.scene=ALL-UNNAMED</vmArg>
+                        <vmArg>--add-exports=javafx.controls/com.sun.javafx.scene.control.behavior=ALL-UNNAMED</vmArg>
+                        <vmArg>--add-exports=javafx.controls/com.sun.javafx.scene.control=ALL-UNNAMED</vmArg>
+                        <vmArg>--add-opens=java.base/java.lang.reflect=ALL-UNNAMED</vmArg>
+                        <vmArg>--add-opens=java.base/java.util=ALL-UNNAMED</vmArg>
+                    </vmArgs>
                     <!--                    <platform>mac</platform>-->
                 </configuration>
                 <executions>

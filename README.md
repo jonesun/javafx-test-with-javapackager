@@ -106,6 +106,18 @@ pom.xml中加入将.keystore加入到工具中:
 ```xml
      <additionalResource>../jonesun.keystore</additionalResource>
 ```
+# 注意
 
+项目升级到java17后, 想要直接运行javafx打开弹框得话, 需要在idea得启动配置里添加vm参数
 
-
+```
+--add-exports=javafx.controls/com.sun.javafx.scene.control.behavior=ALL-UNNAMED
+--add-exports=javafx.base/com.sun.javafx.binding=ALL-UNNAMED
+--add-exports=javafx.base/com.sun.javafx.event=ALL-UNNAMED
+--add-exports=javafx.graphics/com.sun.javafx.stage=ALL-UNNAMED
+--add-exports=javafx.graphics/com.sun.javafx.scene=ALL-UNNAMED
+--add-exports=javafx.controls/com.sun.javafx.scene.control.behavior=ALL-UNNAMED
+--add-exports=javafx.controls/com.sun.javafx.scene.control=ALL-UNNAMED
+--add-opens=java.base/java.lang.reflect=ALL-UNNAMED
+--add-opens=java.base/java.util=ALL-UNNAMED
+```
