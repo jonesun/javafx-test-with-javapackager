@@ -57,7 +57,7 @@ public class JavaFxDelegate extends Application implements Delegate {
 //        primaryStage.setScene(new Scene(rootNode, 300, 275));
 //        primaryStage.show();
 
-        URL configUrl = new URL("http://192.168.31.13/resource/demo/app/config.xml");
+        URL configUrl = new URL("http://localhost/resource/demo/app/config.xml");
         try (Reader in = new InputStreamReader(configUrl.openStream(), StandardCharsets.UTF_8);
              InputStream certIn = Files.newInputStream(Paths.get("jonesun.keystore"))) {
             KeyStore ks = KeyStore.getInstance("pkcs12");

@@ -23,7 +23,7 @@ public class CreateConfig {
     //https://repo1.maven.org/maven2
     private static final String MAVEN_BASE = "http://maven.aliyun.com/nexus/content/groups/public";
 
-    private static final String BASE_URL = "http://192.168.31.13/resource/demo";
+    private static final String BASE_URL = "http://localhost/resource/demo";
 
     public static void main(String[] args)  {
 

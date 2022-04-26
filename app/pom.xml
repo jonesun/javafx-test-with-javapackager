@@ -12,7 +12,7 @@
     <artifactId>app</artifactId>
 
     <properties>
-        <springboot.version>2.4.0</springboot.version>
+        <springboot.version>2.6.7</springboot.version>
     </properties>
 
 

@@ -1,4 +1,4 @@
-[Liberica JDK 不仅包含了 JavaFX，还继续为 Windows 以及 Linux 提供 32 位构建](https://bell-sw.com/pages/downloads/#/java-15-current)
+[Liberica JDK 不仅包含了 JavaFX，还继续为 Windows 以及 Linux 提供 32 位构建](https://bell-sw.com/pages/downloads/#/java-17-current)
 
 为了运行javaFx，请下载Full version版本
 

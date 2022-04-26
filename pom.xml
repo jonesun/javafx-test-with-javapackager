@@ -15,11 +15,11 @@
     </modules>
 
     <properties>
-        <maven.compiler.target>15</maven.compiler.target>
-        <maven.compiler.source>15</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>15</java.version>
-        <javafx.version>15</javafx.version>
+        <java.version>17</java.version>
+        <javafx.version>17</javafx.version>
 
         <root>${user.dir}/app-update</root>
         <target>${root}/target</target>
@@ -41,7 +41,7 @@
         <dependency>
             <groupId>org.update4j</groupId>
             <artifactId>update4j</artifactId>
-            <version>1.5.7</version>
+            <version>1.5.9</version>
         </dependency>
 
         <!-- 使用了Liberica JDK就不需要引用openjfx了-->
@@ -71,5 +71,16 @@
         <!--            <version>${javafx.version}</version>-->
         <!--        </dependency>-->
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>aliyun</id>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        </repository>
+        <repository>
+            <id>mavenCenter</id>
+            <url>https://repo1.maven.org/maven2</url>
+        </repository>
+    </repositories>
 
 </project>

@@ -20,7 +20,7 @@
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
-                <version>0.0.5</version>
+                <version>0.0.8</version>
                 <configuration>
                     <mainClass>com.jonesun.bootstrap.JavaFxDelegate</mainClass>
                 </configuration>
@@ -28,16 +28,19 @@
             <plugin>
                 <groupId>io.github.fvarrui</groupId>
                 <artifactId>javapackager</artifactId>
-                <version>1.5.1</version>
+                <version>1.6.6</version>
                 <configuration>
                     <bundleJre>true</bundleJre>
                     <additionalResources>
                         <additionalResource>info.txt</additionalResource>
                         <additionalResource>res</additionalResource>
+<!--                        <additionalResource>${name}.l4j.ini</additionalResource>-->
+                        <!-- 注意这个 .l4j.ini 需要和下面得name对应上-->
+                        <additionalResource>js-bootstrap.l4j.ini</additionalResource>
                         <additionalResource>../jonesun.keystore</additionalResource>
                     </additionalResources>
                     <administratorRequired>true</administratorRequired>
-                    <generateInstaller>true</generateInstaller>
+                    <generateInstaller>false</generateInstaller>
                     <createZipball>false</createZipball>
                     <createTarball>false</createTarball>
                     <customizedJre>false</customizedJre>

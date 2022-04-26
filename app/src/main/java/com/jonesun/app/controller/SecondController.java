@@ -4,6 +4,7 @@ import com.jonesun.app.service.MyService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
@@ -39,6 +40,11 @@ public class SecondController extends BaseController {
     }
 
     public void doGoBack(ActionEvent actionEvent) throws IOException {
-        openController(actionEvent, "/fxml/sample.fxml");
+        Stage stage = getStage(actionEvent);
+        if (stage.getOwner() != null) {
+            stage.close();
+            stage = (Stage) stage.getOwner();
+        }
+        openController(stage.getScene(), "/fxml/sample.fxml");
     }
 }

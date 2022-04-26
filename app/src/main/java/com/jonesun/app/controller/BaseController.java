@@ -74,7 +74,10 @@ public abstract class BaseController implements Initializable {
      * @throws IOException
      */
     public void openController(ActionEvent actionEvent, String fxmlName) throws IOException {
-        Scene scene = getScene(actionEvent);
+        openController(getScene(actionEvent), fxmlName);
+    }
+
+    public void openController(Scene scene, String fxmlName) throws IOException {
         Parent sceneRoot = scene.getRoot();
         if(sceneRoot instanceof JFXDecorator) {
             ((JFXDecorator)scene.getRoot()).setContent(getPaneByFxmlName(fxmlName));
